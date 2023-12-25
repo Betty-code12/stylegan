@@ -21,9 +21,15 @@ def main():
 
     # Load pre-trained network.
     url = 'https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ' # karras2019stylegan-ffhq-1024x1024.pkl
-    with dnnlib.util.open_url(url, cache_dir=config.cache_dir) as f:
-        f_bytes = io.BytesIO(f.read())
-        _G, _D, Gs = pickle.load(f_bytes)
+    response = requests.get(url)
+    response.raise_for_status()
+
+    # 使用 io.BytesIO 将请求内容读取为字节对象
+    f_bytes = io.BytesIO(response.content)
+    _G, _D, Gs = pickle.load(f_bytes)
+    # with dnnlib.util.open_url(url, cache_dir=config.cache_dir) as f:
+    #     f_bytes = io.BytesIO(f.read())
+    #     _G, _D, Gs = pickle.load(f_bytes)
         # _G = Instantaneous snapshot of the generator. Mainly useful for resuming a previous training run.
         # _D = Instantaneous snapshot of the discriminator. Mainly useful for resuming a previous training run.
         # Gs = Long-term average of the generator. Yields higher-quality results than the instantaneous snapshot.
