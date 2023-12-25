@@ -125,8 +125,8 @@ def assert_tf_initialized():
         raise RuntimeError("No default TensorFlow session found. Please call dnnlib.tflib.init_tf().")
 
 
-def create_session(config_dict: dict = None, force_as_default: bool = False) -> tf.Session:
-    """Create tf.Session based on config dict."""
+def create_session(config_dict: dict = None, force_as_default: bool = False) -> tf.compat.v1.Session:
+    """Create tf.compat.v1.Session based on config dict."""
     # Setup TensorFlow config proto.
     cfg = _sanitize_tf_config(config_dict)
     config_proto = tf.ConfigProto()
@@ -139,7 +139,7 @@ def create_session(config_dict: dict = None, force_as_default: bool = False) -> 
             setattr(obj, fields[-1], value)
 
     # Create session.
-    session = tf.Session(config=config_proto)
+    session = tf.compat.v1.Session(config=config_proto)
     if force_as_default:
         # pylint: disable=protected-access
         session._default_session = session.as_default()
