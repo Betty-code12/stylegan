@@ -10,9 +10,9 @@
 #----------------------------------------------------------------------------
 # Paths.
 
-result_dir = 'results'
-data_dir = 'datasets'
-cache_dir = 'cache'
-run_dir_ignore = ['results', 'datasets', 'cache']
+result_dir = '/kaggle/working/stylegan/results'
+data_dir = '/kaggle/working/stylegan/datasets'
+cache_dir = '/kaggle/working/stylegan/cache'
+run_dir_ignore = ['/kaggle/working/stylegan/results', '/kaggle/working/stylegan/datasets', '/kaggle/working/stylegan/cache']
 
 #----------------------------------------------------------------------------
