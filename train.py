@@ -35,7 +35,7 @@ if 1:
 
     # Dataset.
     #desc += '-ffhq';     dataset = EasyDict(tfrecord_dir='ffhq');                 train.mirror_augment = True
-    desc += '-PATH of YOUR CUSTOM DATASET'= EasyDict(tfrecord_dir='PATH of YOUR CUSTOM DATASET'); train.mirror_augment = True
+    desc += '-PATH of YOUR CUSTOM DATASET';     dataset = EasyDict(tfrecord_dir='PATH of YOUR CUSTOM DATASET');                 train.mirror_augment = True
     #desc += '-ffhq512';  dataset = EasyDict(tfrecord_dir='ffhq', resolution=512); train.mirror_augment = True
     #desc += '-ffhq256';  dataset = EasyDict(tfrecord_dir='ffhq', resolution=256); train.mirror_augment = True
     #desc += '-celebahq'; dataset = EasyDict(tfrecord_dir='celebahq');             train.mirror_augment = True
