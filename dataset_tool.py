@@ -72,7 +72,11 @@ class TFRecordExporter:
             assert self.shape[0] in [1, 3]
             assert self.shape[1] == self.shape[2]
             assert self.shape[1] == 2**self.resolution_log2
-            tfr_opt = tf.io.TFRecordOptions(tf.io.TFRecordCompressionOptions(None))
+            
+            compression_type = ""
+            tfr_opt = tf.io.TFRecordOptions(compression_type)
+            
+            # tfr_opt = tf.io.TFRecordOptions(tf.io.TFRecordCompressionOptions(None))
             for lod in range(self.resolution_log2 - 1):
                 tfr_file = self.tfr_prefix + '-r%02d.tfrecords' % (self.resolution_log2 - lod)
                 self.tfr_writers.append(tf.io.TFRecordWriter(tfr_file, tfr_opt))
